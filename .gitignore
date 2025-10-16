@@ -1,0 +1,12 @@
+# Environment and secrets
+.venv/
+.env
+
+# Cache and logs
+__pycache__/
+data/prompts_log.csv
+
+# Local test scripts
+test_gemini.py
+test_perspective.py
+debug_helper.py
