@@ -1,8 +1,16 @@
+import os
+import requests
 import streamlit as st
 import pandas as pd
+import google.generativeai as genai
 from safety_filter import analyze_text
 from gemini_helper import generate_response
 from utils.logger import log_interaction
+
+# Load API keys from Streamlit Secrets or local .env fallback
+GEMINI_KEY = st.secrets.get("GEMINI_API_KEY", os.getenv("GEMINI_API_KEY"))
+PERSPECTIVE_KEY = st.secrets.get("PERSPECTIVE_API_KEY", os.getenv("PERSPECTIVE_API_KEY"))
+genai.configure(api_key=GEMINI_KEY)
 
 # Configure the Streamlit page
 st.set_page_config(page_title="Safe Student AI", page_icon="🧠", layout="centered")
